@@ -1,0 +1,16 @@
+site_name: Josiah's Code Snippets
+site_url: https://jojoduquartier.github.io/
+nav:
+  - Home: index.md
+  - Snippets:
+    - Try/Catch Decorator: snippets/logging_decorator.md
+    - Close DB Connections: snippets/close_db_connections.md
+theme:
+  name: material
+  # custom_dir: 'cinder'
+extra:
+  disqus: jojoduquartier
+markdown_extensions:
+  - meta
+  - pymdownx.highlight
+  - pymdownx.superfences
