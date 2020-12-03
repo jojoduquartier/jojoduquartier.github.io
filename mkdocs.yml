@@ -5,6 +5,7 @@ nav:
   - Snippets:
     - Try/Catch Decorator: snippets/logging_decorator.md
     - Close DB Connections: snippets/close_db_connections.md
+    - Organize DB Credentials: snippets/organize_db_connections.md
 theme:
   name: material
   # custom_dir: 'cinder'
@@ -12,5 +13,6 @@ extra:
   disqus: jojoduquartier
 markdown_extensions:
   - meta
+  - footnotes
   - pymdownx.highlight
   - pymdownx.superfences

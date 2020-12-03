@@ -15,3 +15,6 @@ The snippets shared here are meant to be very simple and applicable in different
 ### Connect
 ---
 [GitHub](https://github.com/jojoduquartier)
+
+[^1]: All these posts represent my own (personal) opinion on the topics I cover.
+[^2]: Non-native python packages will be used in the snippets, if I do not provide a link to the packages, there will certainly be easy to find on [PyPI](https://pypi.org/).
