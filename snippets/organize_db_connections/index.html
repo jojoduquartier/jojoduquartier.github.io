@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://jojoduquartier.github.io/snippets/close_db_connections/">
+        <link rel="canonical" href="https://jojoduquartier.github.io/snippets/organize_db_connections/">
       
       
       <link rel="shortcut icon" href="../../assets/images/favicon.png">
@@ -16,7 +16,7 @@
     
     
       
-        <title>Close DB Connections - Josiah's Code Snippets</title>
+        <title>Organize DB Credentials - Josiah's Code Snippets</title>
       
     
     
@@ -59,7 +59,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#close-db-connections" class="md-skip">
+        <a href="#organize-db-credentials" class="md-skip">
           Skip to content
         </a>
       
@@ -89,7 +89,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              Close DB Connections
+              Organize DB Credentials
             
           </span>
         </div>
@@ -207,6 +207,18 @@
           
           
 
+
+  <li class="md-nav__item">
+    <a href="../close_db_connections/" class="md-nav__link">
+      Close DB Connections
+    </a>
+  </li>
+
+        
+          
+          
+          
+
   
 
 
@@ -216,12 +228,12 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
-        Close DB Connections
+        Organize DB Credentials
         <span class="md-nav__icon md-icon"></span>
       </label>
     
     <a href="./" class="md-nav__link md-nav__link--active">
-      Close DB Connections
+      Organize DB Credentials
     </a>
     
       
@@ -236,23 +248,23 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#close-db-connections" class="md-nav__link">
-    Close DB Connections
+  <a href="#organize-db-credentials" class="md-nav__link">
+    Organize DB Credentials
   </a>
   
-    <nav class="md-nav" aria-label="Close DB Connections">
+    <nav class="md-nav" aria-label="Organize DB Credentials">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#the-snippet" class="md-nav__link">
-    The Snippet
+  <a href="#general-db-info-store-file-on-protected-drive" class="md-nav__link">
+    General DB Info - store file on protected drive
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#an-example" class="md-nav__link">
-    An Example
+  <a href="#credentials-encrypt-credentials-first" class="md-nav__link">
+    Credentials - encrypt credentials first
   </a>
   
 </li>
@@ -266,18 +278,6 @@
   
 </nav>
     
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../organize_db_connections/" class="md-nav__link">
-      Organize DB Credentials
-    </a>
   </li>
 
         
@@ -308,23 +308,23 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#close-db-connections" class="md-nav__link">
-    Close DB Connections
+  <a href="#organize-db-credentials" class="md-nav__link">
+    Organize DB Credentials
   </a>
   
-    <nav class="md-nav" aria-label="Close DB Connections">
+    <nav class="md-nav" aria-label="Organize DB Credentials">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#the-snippet" class="md-nav__link">
-    The Snippet
+  <a href="#general-db-info-store-file-on-protected-drive" class="md-nav__link">
+    General DB Info - store file on protected drive
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#an-example" class="md-nav__link">
-    An Example
+  <a href="#credentials-encrypt-credentials-first" class="md-nav__link">
+    Credentials - encrypt credentials first
   </a>
   
 </li>
@@ -347,48 +347,90 @@
               
                 
                 
-                  <h1>Close DB Connections</h1>
+                  <h1>Organize DB Credentials</h1>
                 
                 <hr />
-<h2 id="close-db-connections">Close DB Connections</h2>
-<p>Nearly every data scientist work(ed)s on a project that requires connection to a database (DB). It is always a good idea to close DB connections after reading/writing the data you need. <a href="https://www.sqlalchemy.org/">SQLAlchemy</a> has a <code>dispose</code> method for DB engines as well as objects to handle transactions that release resources automatically. Every DB API in python has a method to close connections; <a href="https://cx-oracle.readthedocs.io/en/latest/">CXOracle</a> has a <a href="https://cx-oracle.readthedocs.io/en/latest/user_guide/connection_handling.html#closing-connections">close</a> method for example.</p>
-<p>When dealing with different databases, in order to not repeat myself and make sure I always close connections, I tend to use a snippet like this:</p>
-<h4 id="the-snippet">The Snippet</h4>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">sqlite3</span>
-<span class="kn">import</span> <span class="nn">contextlib</span>
-<span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
-
-
-<span class="nd">@contextlib</span><span class="o">.</span><span class="n">contextmanager</span>
-<span class="k">def</span> <span class="nf">db_connections</span><span class="p">():</span>
-    <span class="c1"># the engines created here could all be Oracle, MSSql, Snowflake etc.</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="c1"># connect to some in-memory engine</span>
-        <span class="n">sales_db</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="s1">&#39;sqlite:///&#39;</span><span class="p">)</span>
-
-        <span class="c1"># another in-memory engine</span>
-        <span class="n">manufacturing_db</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;:memory:&#39;</span><span class="p">)</span>
-
-        <span class="c1"># yield results</span>
-        <span class="k">yield</span> <span class="n">sales_db</span><span class="p">,</span> <span class="n">manufacturing_db</span>
-    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="c1"># handle exceptions etc</span>
-        <span class="k">pass</span>
-    <span class="k">finally</span><span class="p">:</span>
-        <span class="n">sales_db</span><span class="o">.</span><span class="n">dispose</span><span class="p">()</span>
-        <span class="n">manufacturing_db</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<h2 id="organize-db-credentials">Organize DB Credentials</h2>
+<p><em>This is somewhat a shameless plug for a python package I developed 😅</em></p>
+<p>Some data scientists (especially those not working on cloud platforms) cound find themselves with different database credentials from <a href="https://www.oracle.com/database/technologies/appdev/sql.html">Oracle</a>, <a href="https://en.wikipedia.org/wiki/PostgreSQL">Postgre</a>, <a href="https://www.mysql.com/">MySQL</a> dialects. By DB credentials, I am referring to everything from the host address, the port number all the way to the username and passwords needed to establish connection to the database. I was once asked what was the best way to manage said credentials. The best way would certainly be to use some sort of key management system. Without such system, for quick and safe data exploration I found it useful to use <a href="https://www.json.org/json-en.html">json</a> files like this:</p>
+<h4 id="general-db-info-store-file-on-protected-drive">General DB Info - store file on protected drive</h4>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">&quot;oracle&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;my_database_1&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;host&quot;</span><span class="p">:</span> <span class="s2">&quot;localhost:database1&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;port&quot;</span><span class="p">:</span> <span class="s2">&quot;1521&quot;</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;my_database_2&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;host&quot;</span><span class="p">:</span> <span class="s2">&quot;localhost:database2&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;port&quot;</span><span class="p">:</span> <span class="s2">&quot;1521&quot;</span><span class="p">,</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;mysql&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;my_database_1&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;host&quot;</span><span class="p">:</span> <span class="s2">&quot;localhost:database1&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;port&quot;</span><span class="p">:</span> <span class="s2">&quot;3306&quot;</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;my_database_2&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;host&quot;</span><span class="p">:</span> <span class="s2">&quot;localhost:database2&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;port&quot;</span><span class="p">:</span> <span class="s2">&quot;3306&quot;</span><span class="p">,</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 
-<p><a href="https://docs.python.org/3/reference/datamodel.html#context-managers">Context Managers</a> are very useful in python when it comes to providing and releasing resources (like opening a file to read from and releasing it for the next task). There is a utility <a href="https://docs.python.org/3/library/contextlib.html#contextlib.contextmanager">decorator</a> that makes it easy to turn your existing functions into context-managers and that is what I used for this snippet.</p>
-<h4 id="an-example">An Example</h4>
-<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="n">db_connections</span><span class="p">()</span> <span class="k">as</span> <span class="p">(</span><span class="n">sales_db</span><span class="p">,</span> <span class="n">manufacturing_db</span><span class="p">):</span>
-    <span class="c1"># do something like </span>
-    <span class="c1"># pd.read_sql(..., sales_db)</span>
-    <span class="c1"># pd.read_sql(..., manufacturing_db)</span>
-    <span class="k">pass</span>
+<h4 id="credentials-encrypt-credentials-first">Credentials - encrypt credentials first</h4>
+<p>Username and Passwords are sensitive info so I use the <a href="https://pypi.org/project/cryptography/">Cryptography</a> package to encrypt them and store the file and save them on a safe drive</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">&quot;oracle&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;my_database_1&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;encrypted&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;port&quot;</span><span class="p">:</span> <span class="s2">&quot;encrypted&quot;</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;my_database_2&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;host&quot;</span><span class="p">:</span> <span class="s2">&quot;encrypted&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;port&quot;</span><span class="p">:</span> <span class="s2">&quot;encrypted&quot;</span><span class="p">,</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;mysql&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;my_database_1&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;host&quot;</span><span class="p">:</span> <span class="s2">&quot;encrypted&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;port&quot;</span><span class="p">:</span> <span class="s2">&quot;encrypted&quot;</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;my_database_2&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;host&quot;</span><span class="p">:</span> <span class="s2">&quot;encrypted&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;port&quot;</span><span class="p">:</span> <span class="s2">&quot;encrypted&quot;</span><span class="p">,</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 
-<p>Thank you!</p>
+<p>The encryption key is stored somewhere else to make it harder to decypt the data. With these files, I can easily separate my Oracle databases from MySQL databases etc.</p>
+<p>But there's room for improvement; the code to connect to the databases is often the same and I would have to repeat the same thing over and over in jupyter notebooks or exploratory scripts. In order to avoid repetition, I created this <a href="https://github.com/jojoduquartier/dsdbmanager">package: dsdbmanager</a> where <em>dsdb</em> stands for <em>data science database</em>. I will not speak in detail of the package but it allows me to effortlessly do things like:</p>
+<ol>
+<li>Add any new database to the file directly with functionality from the package</li>
+<li>Easily connect to any specific database I want with simple commands like:
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">dsdbmanager</span> <span class="kn">import</span> <span class="n">oracle</span>
+<span class="n">oracle_databases</span> <span class="o">=</span> <span class="n">oracle</span><span class="p">()</span>
+<span class="n">oracle_database_1</span> <span class="o">=</span> <span class="n">oracle_databases</span><span class="o">.</span><span class="n">my_database_1</span><span class="p">(</span><span class="n">connect_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="s1">&#39;some_schema&#39;</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s2">&quot;select * from some table&quot;</span><span class="p">,</span> <span class="n">oracle_database_1</span><span class="o">.</span><span class="n">sqlalchemy_engine</span><span class="p">)</span>
+</code></pre></div></li>
+<li>See all tables and views available in a schema of my database</li>
+<li>See metadata on number of rows and all columns for any table/view in the schema</li>
+</ol>
+<p>When my projects move to production though, I do not use this package as we have ways of handling database credentials but this package has made my life very easy as I can quickly and effortlessly connect to databses and quickly check for things to debug issues. </p>
+<p>Hopefully you try this package out and find it useful! If you have any questions, please ask them in the comments below.</p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>The idea to develop a package like this was conceived while having a nice beer with a colleague and friend <a href="https://github.com/jewelltp">Tyler</a>.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>The package currentl supports Oracle, MySQL, MSSQL, Teradata and Snowflake Connections. Contributors are more than welcome to improve the package.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
                 
                   
                 
@@ -401,7 +443,7 @@
 
   <h2 id="__comments">Comments</h2>
   <div id="disqus_thread"></div>
-  <script>var disqus_config=function(){this.page.url="https://jojoduquartier.github.io/snippets/close_db_connections/",this.page.identifier="snippets/close_db_connections/"};window.addEventListener("load",function(){var e=document,i=e.createElement("script");i.src="//jojoduquartier.disqus.com/embed.js",i.setAttribute("data-timestamp",+new Date),(e.head||e.body).appendChild(i)})</script>
+  <script>var disqus_config=function(){this.page.url="https://jojoduquartier.github.io/snippets/organize_db_connections/",this.page.identifier="snippets/organize_db_connections/"};window.addEventListener("load",function(){var e=document,i=e.createElement("script");i.src="//jojoduquartier.disqus.com/embed.js",i.setAttribute("data-timestamp",+new Date),(e.head||e.body).appendChild(i)})</script>
 
               
             </article>
@@ -415,7 +457,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
-          <a href="../logging_decorator/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../close_db_connections/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-footer-nav__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
             </div>
@@ -424,25 +466,11 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Try/Catch Decorator
+                Close DB Connections
               </div>
             </div>
           </a>
         
-        
-          <a href="../organize_db_connections/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
-            <div class="md-footer-nav__title">
-              <div class="md-ellipsis">
-                <span class="md-footer-nav__direction">
-                  Next
-                </span>
-                Organize DB Credentials
-              </div>
-            </div>
-            <div class="md-footer-nav__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-            </div>
-          </a>
         
       </nav>
     </div>
