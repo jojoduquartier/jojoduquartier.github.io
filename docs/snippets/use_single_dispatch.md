@@ -85,6 +85,9 @@ sample(df, 1000)  # should have replacement
 # try it on the numpy array from the dataframe
 sample(numpy_representation)
 sample(numpy_representation, 1000)
+
+# now try it on something you have not implemented it for
+sample([1, 2, 3, 4, 5])
 ```
 
 [^1]: Please read up on this cool decorator from python. It became available with python 3.4 and is (in my opinion) very useful!
