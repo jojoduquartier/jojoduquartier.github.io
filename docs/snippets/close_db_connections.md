@@ -4,7 +4,6 @@ disqus: jojoduquartier
 
 ...
 
-
 ---
 Close DB Connections
 ---

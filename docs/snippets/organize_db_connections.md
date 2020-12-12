@@ -4,7 +4,6 @@ disqus: jojoduquartier
 
 ...
 
-
 ---
 Organize DB Credentials
 ---

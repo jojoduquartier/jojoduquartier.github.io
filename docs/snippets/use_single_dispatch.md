@@ -1,0 +1,91 @@
+---
+disqus: jojoduquartier
+---
+
+...
+
+---
+Same Function Name - Different Data Types
+---
+
+#### Context 
+
+Whether you are writing code to process data or build machine learning, you will find yourself is situations where you want to do one thing but on different structures like a numpy array, a pandas dataframe etc.
+
+Say you have to write a function to sample data from a data structure that could be either a numpy array or a pandas dataframe.
+
+1. We could create two different functions
+```python
+def sample_numpy(data):
+    pass
+
+def sample_dataframe(data):
+    pass
+```
+
+2. We could write one function and check the type of the function
+```python
+import numpy as np
+import pandas as pd
+
+def sample(data):
+    if isinstance(data, np.ndarray):
+        # do something
+        pass
+    if isinstance(data, pd.DataFrame):
+        # do something
+        pass
+    
+    raise NotImplementedError()
+```
+
+If we go with the first approach, if we need to handle more data types, we can easily end up with many functions and tracking the name would be cumbersome. If we went with the second approach, the function will quickly span many more lines. There is a better approach, one that allow us to use the exact same function name and split our codes so that we actually handle each data type separately (as if we wrote different functions).
+
+Enters [singledispatch](https://docs.python.org/3/library/functools.html#functools.singledispatch)! I highly recommend reading on this `decorator` and use it whenever you can.
+
+#### The Snippet
+
+```python
+import numpy as np
+import pandas as pd
+from functools import singledispatch
+
+
+@singledispatch
+def sample(data, n: int = 10):
+    raise NotImplementedError(f"Not yet implemented for {type(data)} type")
+
+
+@sample.register(np.ndarray)
+def v1(data: np.ndarray, n: int = 10):
+    # we want replacement is n is bigger than the # observations
+    indices = np.random.choice(data.shape[0], n, replace=(n > len(data)))
+    return data[indices].copy()
+
+
+@sample.register(pd.DataFrame)
+def v2(data: pd.DataFrame, n: int = 10):
+    return data.sample(n, replace=(n > len(data)))
+```
+
+#### An Example
+
+Assuming you have the code from the block above
+```python
+df = pd.read_csv(
+    "https://raw.githubusercontent.com/scikit-learn/scikit-learn/master/sklearn/datasets/data/iris.csv"
+)
+
+numpy_representation = df.values
+
+# try it on the pandas dataframe
+sample(df)
+sample(df, 1000)  # should have replacement
+
+# try it on the numpy array from the dataframe
+sample(numpy_representation)
+sample(numpy_representation, 1000)
+```
+
+[^1]: Please read up on this cool decorator from python. It became available with python 3.4 and is (in my opinion) very useful!
+[^2]: If you use python 3.8+, checkout the [singledispatchmethod](https://docs.python.org/3/library/functools.html#functools.singledispatchmethod) for dealing with class methods.
