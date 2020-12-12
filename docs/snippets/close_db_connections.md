@@ -7,6 +7,7 @@ disqus: jojoduquartier
 ---
 Close DB Connections
 ---
+Published: December 2020
 
 Nearly every data scientist work(ed)s on a project that requires connection to a database (DB). It is always a good idea to close DB connections after reading/writing the data you need. [SQLAlchemy](https://www.sqlalchemy.org/) has a `dispose` method for DB engines as well as objects to handle transactions that release resources automatically. Every DB API in python has a method to close connections; [CXOracle](https://cx-oracle.readthedocs.io/en/latest/) has a [close](https://cx-oracle.readthedocs.io/en/latest/user_guide/connection_handling.html#closing-connections) method for example.
 

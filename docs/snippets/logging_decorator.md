@@ -7,6 +7,7 @@ disqus: jojoduquartier
 ---
 Try - Catch
 ---
+Published: December 2020
 
 #### Exception Handling on Multiple Functions
 ---

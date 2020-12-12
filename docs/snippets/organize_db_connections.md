@@ -7,6 +7,7 @@ disqus: jojoduquartier
 ---
 Organize DB Credentials
 ---
+Published: December 2020
 
 *This is somewhat a shameless plug for a python package I developed 😅*
 
