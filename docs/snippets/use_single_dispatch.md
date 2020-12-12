@@ -10,11 +10,11 @@ Same Function Name - Different Data Types
 
 #### Context 
 
-Whether you are writing code to process data or build machine learning, you will find yourself is situations where you want to do one thing but on different structures like a numpy array, a pandas dataframe etc.
+Whether you are writing code to process data or build machine learning models, you will find yourself is situations where you want to do one thing but on different structures like a numpy array, a pandas dataframe etc.
 
 Say you have to write a function to sample data from a data structure that could be either a numpy array or a pandas dataframe.
 
-1. We could create two different functions
+1. You could create two different functions
 ```python
 def sample_numpy(data):
     pass
@@ -23,7 +23,7 @@ def sample_dataframe(data):
     pass
 ```
 
-2. We could write one function and check the type of the function
+2. You could write one function and check the type of the function
 ```python
 import numpy as np
 import pandas as pd
@@ -39,7 +39,7 @@ def sample(data):
     raise NotImplementedError()
 ```
 
-If we go with the first approach, if we need to handle more data types, we can easily end up with many functions and tracking the name would be cumbersome. If we went with the second approach, the function will quickly span many more lines. There is a better approach, one that allow us to use the exact same function name and split our codes so that we actually handle each data type separately (as if we wrote different functions).
+If you go with the first approach and need to handle more data types, you can easily end up with many functions and tracking the names would be cumbersome. If you went with the second approach, the function will quickly span multiple lines. There is a better approach, one that allows the use the *exact same function name* and split the functions so that you actually handle each data type separately (as if you wrote different functions).
 
 Enters [singledispatch](https://docs.python.org/3/library/functools.html#functools.singledispatch)! I highly recommend reading on this `decorator` and use it whenever you can.
 
