@@ -12,14 +12,14 @@ Same Function Name - Different Data Types
 
 Whether you are writing code to process data or build machine learning models, you will find yourself is situations where you want to do one thing but on different structures like a numpy array, a pandas dataframe etc.
 
-Say you have to write a function to sample data from a data structure that could be either a numpy array or a pandas dataframe.
+Say you have to write a function to randomly sample data from a structure that could be either a numpy array or a pandas dataframe.
 
 1. You could create two different functions
 ```python
-def sample_numpy(data):
+def sample_numpy(data, n: int = 10):
     pass
 
-def sample_dataframe(data):
+def sample_dataframe(data, n: int = 10):
     pass
 ```
 
@@ -28,7 +28,7 @@ def sample_dataframe(data):
 import numpy as np
 import pandas as pd
 
-def sample(data):
+def sample(data, n: int = 10):
     if isinstance(data, np.ndarray):
         # do something
         pass
