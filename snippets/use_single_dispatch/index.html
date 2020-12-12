@@ -378,11 +378,11 @@
                 <hr />
 <h2 id="same-function-name-different-data-types">Same Function Name - Different Data Types</h2>
 <h4 id="context">Context</h4>
-<p>Whether you are writing code to process data or build machine learning, you will find yourself is situations where you want to do one thing but on different structures like a numpy array, a pandas dataframe etc.</p>
+<p>Whether you are writing code to process data or build machine learning models, you will find yourself is situations where you want to do one thing but on different structures like a numpy array, a pandas dataframe etc.</p>
 <p>Say you have to write a function to sample data from a data structure that could be either a numpy array or a pandas dataframe.</p>
 <ol>
 <li>
-<p>We could create two different functions
+<p>You could create two different functions
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">sample_numpy</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
     <span class="k">pass</span>
 
@@ -391,7 +391,7 @@
 </code></pre></div></p>
 </li>
 <li>
-<p>We could write one function and check the type of the function
+<p>You could write one function and check the type of the function
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
@@ -407,7 +407,7 @@
 </code></pre></div></p>
 </li>
 </ol>
-<p>If we go with the first approach, if we need to handle more data types, we can easily end up with many functions and tracking the name would be cumbersome. If we went with the second approach, the function will quickly span many more lines. There is a better approach, one that allow us to use the exact same function name and split our codes so that we actually handle each data type separately (as if we wrote different functions).</p>
+<p>If you go with the first approach and need to handle more data types, you can easily end up with many functions and tracking the names would be cumbersome. If you went with the second approach, the function will quickly span multiple lines. There is a better approach, one that allows the use the <em>exact same function name</em> and split the functions so that you actually handle each data type separately (as if you wrote different functions).</p>
 <p>Enters <a href="https://docs.python.org/3/library/functools.html#functools.singledispatch">singledispatch</a>! I highly recommend reading on this <code>decorator</code> and use it whenever you can.</p>
 <h4 id="the-snippet">The Snippet</h4>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
