@@ -7,6 +7,7 @@ nav:
     - Close DB Connections: snippets/close_db_connections.md
     - Organize DB Credentials: snippets/organize_db_connections.md
     - Same Function Name - Different Data Types: snippets/use_single_dispatch.md
+    - Pandas Dataframe to Database: snippets/dataframe_to_database.md
 theme:
   name: material
   # custom_dir: 'cinder'
