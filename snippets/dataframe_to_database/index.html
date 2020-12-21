@@ -10,7 +10,7 @@
       
       
       
-        <link rel="canonical" href="https://jojoduquartier.github.io/snippets/logging_decorator/">
+        <link rel="canonical" href="https://jojoduquartier.github.io/snippets/dataframe_to_database/">
       
       
       <link rel="shortcut icon" href="../../assets/images/favicon.png">
@@ -18,7 +18,7 @@
     
     
       
-        <title>Try/Catch Decorator - Josiah's Code Snippets</title>
+        <title>Pandas Dataframe to Database - Josiah's Code Snippets</title>
       
     
     
@@ -61,7 +61,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#try-catch" class="md-skip">
+        <a href="#from-dataframe-to-database-table" class="md-skip">
           Skip to content
         </a>
       
@@ -91,7 +91,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              Try/Catch Decorator
+              Pandas Dataframe to Database
             
           </span>
         </div>
@@ -223,72 +223,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        Try/Catch Decorator
-        <span class="md-nav__icon md-icon"></span>
-      </label>
-    
-    <a href="./" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../logging_decorator/" class="md-nav__link">
       Try/Catch Decorator
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#try-catch" class="md-nav__link">
-    Try - Catch
-  </a>
-  
-    <nav class="md-nav" aria-label="Try - Catch">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#exception-handling-on-multiple-functions" class="md-nav__link">
-    Exception Handling on Multiple Functions
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#the-snippet" class="md-nav__link">
-    The Snippet
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#an-example" class="md-nav__link">
-    An Example
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -332,11 +271,65 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../dataframe_to_database/" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Pandas Dataframe to Database
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
       Pandas Dataframe to Database
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#from-dataframe-to-database-table" class="md-nav__link">
+    From Dataframe to Database Table
+  </a>
+  
+    <nav class="md-nav" aria-label="From Dataframe to Database Table">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-idea" class="md-nav__link">
+    The Idea
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-snippet" class="md-nav__link">
+    The Snippet
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -367,16 +360,16 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#try-catch" class="md-nav__link">
-    Try - Catch
+  <a href="#from-dataframe-to-database-table" class="md-nav__link">
+    From Dataframe to Database Table
   </a>
   
-    <nav class="md-nav" aria-label="Try - Catch">
+    <nav class="md-nav" aria-label="From Dataframe to Database Table">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#exception-handling-on-multiple-functions" class="md-nav__link">
-    Exception Handling on Multiple Functions
+  <a href="#the-idea" class="md-nav__link">
+    The Idea
   </a>
   
 </li>
@@ -384,13 +377,6 @@
           <li class="md-nav__item">
   <a href="#the-snippet" class="md-nav__link">
     The Snippet
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#an-example" class="md-nav__link">
-    An Example
   </a>
   
 </li>
@@ -413,78 +399,86 @@
               
                 
                 
-                  <h1>Try/Catch Decorator</h1>
+                  <h1>Pandas Dataframe to Database</h1>
                 
                 <hr />
-<h2 id="try-catch">Try - Catch</h2>
+<h2 id="from-dataframe-to-database-table">From Dataframe to Database Table</h2>
 <p>Published: December 2020</p>
-<h4 id="exception-handling-on-multiple-functions">Exception Handling on Multiple Functions</h4>
-<hr />
-<p>I often find myself splitting my code across modules each with their functions that I use in some sort of a <code>main</code> script or function for my projects. I like to log the progress of my code when it is deployed and I also like to keep one single log per project (when this makes sense obviously). When a function I imported is being used by the main function/script, I try to wrap it in some try/except (see below code block) block to make sure I catch any unexpected failure. </p>
-<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
-    <span class="c1"># call the function</span>
-<span class="k">except</span><span class="p">:</span>
-    <span class="c1"># do something and log it</span>
-<span class="k">finally</span><span class="p">:</span>
-    <span class="c1"># release resources</span>
-</code></pre></div>
-
-<p>In the spirit of <a href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself">DRY</a>, I started using this simple decorator for my functions so that I can avoid wrapping all functions with the try/except block.</p>
+<p>There are different database connectors but this one is mainly about using <a href="https://www.sqlalchemy.org/">SQLAlchemy</a>. You already know that <a href="https://pandas.pydata.org/pandas-docs/stable/index.html">pandas</a> offers the <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_sql.html">.sql</a> on dataframes and it is extremely user friendly (especially when you add some database configurations and define column datatypes, this method can be very fast).</p>
+<p>This post will provide a (potentially) quicker route to add data to your database with sqlalchemy.</p>
+<p>Disclaimer: For most databases, you need the classic <code>insert into {} ...</code> statement to push data; SQLAlchemy is not a replacement for SQL.</p>
+<p>There are two common problems when someone tries to create the <code>insert</code> statement via <a href="https://www.python.org/dev/peps/pep-0498/"><code>f-strings</code></a>.</p>
+<ol>
+<li>Formatting dates to the specification of the database</li>
+<li>Handling nulls. If your dataframe has <code>NaN</code> or <code>NaT</code> values, definitely change them to <code>None</code>!</li>
+</ol>
+<h4 id="the-idea">The Idea</h4>
+<ol>
+<li><a href="https://www.pythonsheets.com/notes/python-sqlalchemy.html#reflection-loading-table-from-existing-database">Reflect</a> your table</li>
+<li>Make sure your dataframe has <code>None</code> for every null variable</li>
+<li>Turn your dataframe into a list of dictionaries (this is used to bind variables/parameter)</li>
+<li>Execute the insert statement</li>
+</ol>
+<p>If you have too large a dataframe (like say 100K rows or more), I suggest <a href="https://toolz.readthedocs.io/en/latest/api.html#toolz.itertoolz.partition_all">chunking</a> the list.</p>
 <h4 id="the-snippet">The Snippet</h4>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">wraps</span>
-<span class="kn">from</span> <span class="nn">loguru._logger</span> <span class="kn">import</span> <span class="n">Logger</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">pandas</span>
+<span class="kn">import</span> <span class="nn">sqlalchemy</span>
 
-<span class="k">def</span> <span class="nf">try_catch</span><span class="p">(</span><span class="n">logger</span><span class="p">:</span> <span class="n">Logger</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Decorate a function with the module logger to not just track errors</span>
-<span class="sd">    but catch errors on any function without repeating a try:...except:... block</span>
+<span class="c1"># assume you have a sqlalchemy engine and we want to push data to table `some_table`</span>
+<span class="n">engine</span><span class="p">:</span> <span class="n">sqlalchemy</span><span class="o">.</span><span class="n">engine</span><span class="o">.</span><span class="n">base</span><span class="o">.</span><span class="n">Engine</span> <span class="c1"># define your engine - connector</span>
+<span class="n">dataframe</span><span class="p">:</span> <span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span> <span class="c1"># your data you want to push</span>
 
-<span class="sd">    :param logger: a logger object, could be a python native logger as well</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">proper_decorator</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
-        <span class="nd">@wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
-        <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-            <span class="k">try</span><span class="p">:</span>
-                <span class="n">output</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-                <span class="k">return</span> <span class="n">output</span>
+<span class="c1"># 1. Reflect - just one way (some db won&#39;t allow you to reflect properly)</span>
+<span class="n">table</span> <span class="o">=</span> <span class="n">sqlalchemy</span><span class="o">.</span><span class="n">Table</span><span class="p">(</span>
+    <span class="s1">&#39;some_table&#39;</span><span class="p">,</span>
+    <span class="n">sqlalchemy</span><span class="o">.</span><span class="n">MetaData</span><span class="p">(</span><span class="n">engine</span><span class="p">),</span> <span class="c1"># you can also provide a schema argument to MetaData</span>
+    <span class="n">autoload</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
 
-            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-                <span class="n">logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failure in </span><span class="si">{</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-                <span class="k">raise</span> <span class="n">e</span>
+<span class="c1"># 2. Handle Nulls</span>
+<span class="n">dataframe_</span> <span class="o">=</span> <span class="n">dataframe</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">notnull</span><span class="p">(</span><span class="n">dataframe</span><span class="p">),</span> <span class="kc">None</span><span class="p">)</span>
 
-        <span class="k">return</span> <span class="n">wrapper</span>
+<span class="c1"># 3. Turn dataframe int a list of variables to bind</span>
+<span class="n">records</span> <span class="o">=</span> <span class="n">dataframe_</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="n">orient</span><span class="o">=</span><span class="s1">&#39;records&#39;</span><span class="p">))</span>
 
-    <span class="k">return</span> <span class="n">proper_decorator</span>
+<span class="c1"># 4. Push - execute statement</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">table</span><span class="o">.</span><span class="n">insert</span><span class="p">(),</span> <span class="n">records</span><span class="p">)</span>
+
+<span class="c1"># how many were inserted</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Successfully inserted </span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">rowcount</span><span class="si">}</span><span class="s2"> records&quot;</span><span class="p">)</span>
+<span class="n">result</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">if you partitioned, you could use a for-loop</span>
+<span class="sd">for group in toolz.partition_all(30000, records):</span>
+<span class="sd">    try:</span>
+<span class="sd">        _ = engine.execute(table.insert(), group)</span>
+<span class="sd">    except sqlalchemy.exc.OperationalError as e:</span>
+<span class="sd">        # usually this happens when minor connection problems occur</span>
+<span class="sd">        # or you&#39;re adding too many records too quick</span>
+<span class="sd">        # something that works is to provide some cooldown time</span>
+
+<span class="sd">        time.sleep(5) # maybe 5 seconds</span>
+
+<span class="sd">        # then try to insert again</span>
+<span class="sd">        try:</span>
+<span class="sd">            ...</span>
+<span class="sd">        except ... as e_:</span>
+<span class="sd">            # at this point might as well just raise the error</span>
+<span class="sd">            # but somethings would have been inserted already :(</span>
+<span class="sd">            raise e_</span>
+<span class="sd">&quot;&quot;&quot;</span>
 </code></pre></div>
 
-<p>I use the <code>wraps</code> decorator from <code>functools</code> so that I can use the function's actual name in my traceback. </p>
-<h4 id="an-example">An Example</h4>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">loguru</span> <span class="kn">import</span> <span class="n">logger</span>
-
-<span class="c1"># set the logger handle etc. here</span>
-
-<span class="nd">@try_catch</span><span class="p">(</span><span class="n">logger</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">my_function</span><span class="p">(</span><span class="n">numpy_array</span><span class="p">,</span> <span class="n">user_constant</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Just a 1-D Numpy arrays divided by some constant.</span>
-<span class="sd">    P.S. this example is designed to fail with constant 0</span>
-<span class="sd">    i.e. I omit the ZeroDivision check</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">reciprocal</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">user_constant</span>
-
-    <span class="k">return</span> <span class="n">reciprocal</span> <span class="o">*</span> <span class="n">numpy_array</span>
-
-<span class="c1"># try</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-
-<span class="n">my_function</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span> <span class="mi">2</span><span class="p">)</span>
-
-<span class="n">my_function</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span> <span class="mi">0</span><span class="p">)</span> <span class="c1"># Inspect the log and traceback</span>
-</code></pre></div>
-
-<p>When <code>my_function</code> fails with user providing <code>0</code> for the constant, I want to see the full traceback and the decorator handles that.</p>
-<p>I would suggest using this for functions dealing with databases or external communication that can easily fail unexpectedly.</p>
-<p>Thank you!</p>
+<p>Make sure your dataframe has the same columns as your table (make sure that they are the same case, lower or upper or camelcase etc.)</p>
+<p>Drawbacks:</p>
+<ol>
+<li>This probably only works for some databases.</li>
+<li>When you execute insert statements like this, you cannot really undo them. SQLAlchemy offers <code>Session</code> and <code>Transaction</code> objects that allow you to revert actions. This post is for when you are absolutely sure you want to push the data and would have done a bulk insert anyways.
+https://www.pythonsheets.com/notes/python-sqlalchemy.html#object-relational-add-data</li>
+</ol>
+<p>My personal preference (if possible) is to use <a href="https://www.pythonsheets.com/notes/python-sqlalchemy.html#object-relational-add-data">Objects to declare your database metadata</a>.</p>
                 
                   
                 
@@ -497,7 +491,7 @@
 
   <h2 id="__comments">Comments</h2>
   <div id="disqus_thread"></div>
-  <script>var disqus_config=function(){this.page.url="https://jojoduquartier.github.io/snippets/logging_decorator/",this.page.identifier="snippets/logging_decorator/"};window.addEventListener("load",function(){var e=document,i=e.createElement("script");i.src="//jojoduquartier.disqus.com/embed.js",i.setAttribute("data-timestamp",+new Date),(e.head||e.body).appendChild(i)})</script>
+  <script>var disqus_config=function(){this.page.url="https://jojoduquartier.github.io/snippets/dataframe_to_database/",this.page.identifier="snippets/dataframe_to_database/"};window.addEventListener("load",function(){var e=document,i=e.createElement("script");i.src="//jojoduquartier.disqus.com/embed.js",i.setAttribute("data-timestamp",+new Date),(e.head||e.body).appendChild(i)})</script>
 
               
             </article>
@@ -511,7 +505,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
-          <a href="../.." class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../use_single_dispatch/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-footer-nav__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
             </div>
@@ -520,25 +514,11 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Home
+                Same Function Name - Different Data Types
               </div>
             </div>
           </a>
         
-        
-          <a href="../close_db_connections/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
-            <div class="md-footer-nav__title">
-              <div class="md-ellipsis">
-                <span class="md-footer-nav__direction">
-                  Next
-                </span>
-                Close DB Connections
-              </div>
-            </div>
-            <div class="md-footer-nav__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-            </div>
-          </a>
         
       </nav>
     </div>
