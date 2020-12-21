@@ -1,5 +1,16 @@
+# Project information
 site_name: Josiah's Code Snippets
 site_url: https://jojoduquartier.github.io/
+site_description: Sharing Python code snippets and Notebooks.
+
+# Repository
+repo_name: jojoduquartier/jojoduquartier.github.io
+repo_url: https://github.com/jojoduquartier/jojoduquartier.github.io
+edit_uri: ""
+
+# Copyright
+copyright: ©Copyright 2020 - Josiah Hounyo
+
 nav:
   - Home: index.md
   - Snippets:
